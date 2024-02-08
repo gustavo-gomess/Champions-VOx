@@ -1,0 +1,86 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo da PaginaInicial */
+.pagina-inicial {
+  width: 100%;
+  min-height: 100vh; /* Para ocupar a altura total da tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  font-family: "Roboto", sans-serif;
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border: 4px solid #007bff; /* Adiciona a borda externa */
+  padding: 20px; /* Adiciona um espaçamento interno */
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+form {
+  width: 100%;
+  max-width: 600px; /* Limita a largura do formulário */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 20px;
+  font-size: 20px;
+  width: 100%;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid #007bff;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+  .pagina-inicial {
+    padding: 10px; /* Reduz o espaçamento interno em telas menores */
+  }
+
+  form {
+    padding: 0 20px; /* Adiciona um espaçamento interno horizontal em telas menores */
+  }
+}
