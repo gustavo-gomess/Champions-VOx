@@ -1,26 +1,72 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
-import PropTypes from "prop-types"; // Importe PropTypes
 import "./ClassificacaoGrupos.css";
 
 const ClassificacaoGrupos = ({ numParticipantes, participantes }) => {
-  // Simulação de dados de classificação por grupos e resultados dos jogos
+  console.log("Renderizando ClassificacaoGrupos...");
+
+  // Simulação de partidas
+  const partidas = [
+    { timeCasa: "Time 1", timeFora: "Time 2", placarCasa: 2, placarFora: 1 },
+    { timeCasa: "Time 3", timeFora: "Time 1", placarCasa: 0, placarFora: 2 },
+    // Adicione mais partidas conforme necessário
+  ];
+
+  // Calcula a classificação dos grupos
   const classificacaoCompleta = [
     {
       grupo: "Grupo A",
-      times: participantes.slice(0, numParticipantes / 2).map((time) => ({
+      times: participantes.slice(0, numParticipantes / 2).map((time, idx) => ({
         nome: time,
         pontos: 0,
+        vitorias: 0,
+        derrotas: 0,
+        saldoGols: 0,
       })),
     },
     {
       grupo: "Grupo B",
-      times: participantes.slice(numParticipantes / 2).map((time) => ({
+      times: participantes.slice(numParticipantes / 2).map((time, idx) => ({
         nome: time,
         pontos: 0,
+        vitorias: 0,
+        derrotas: 0,
+        saldoGols: 0,
       })),
     },
   ];
+
+  // Atualiza a classificação com base nas partidas simuladas
+  partidas.forEach(({ timeCasa, timeFora, placarCasa, placarFora }) => {
+    const timeCasaObj = classificacaoCompleta
+      .flatMap((grupo) => grupo.times)
+      .find((time) => time.nome === timeCasa);
+    const timeForaObj = classificacaoCompleta
+      .flatMap((grupo) => grupo.times)
+      .find((time) => time.nome === timeFora);
+
+    if (timeCasaObj && timeForaObj) {
+      // Verificação adicionada para evitar erros
+      // Atualiza pontos
+      if (placarCasa > placarFora) {
+        timeCasaObj.pontos += 3;
+        timeCasaObj.vitorias++;
+        timeForaObj.derrotas++;
+      } else if (placarCasa < placarFora) {
+        timeForaObj.pontos += 3;
+        timeForaObj.vitorias++;
+        timeCasaObj.derrotas++;
+      } else {
+        timeCasaObj.pontos++;
+        timeForaObj.pontos++;
+      }
+
+      // Atualiza saldo de gols
+      timeCasaObj.saldoGols += placarCasa - placarFora;
+      timeForaObj.saldoGols += placarFora - placarCasa;
+    }
+  });
+
+  console.log("Fim da renderização de ClassificacaoGrupos.");
 
   return (
     <div className="classificacao-grupos">
@@ -33,13 +79,19 @@ const ClassificacaoGrupos = ({ numParticipantes, participantes }) => {
               <tr>
                 <th>Time</th>
                 <th>Pontos</th>
+                <th>Vitórias</th>
+                <th>Derrotas</th>
+                <th>Saldo de Gols</th>
               </tr>
             </thead>
             <tbody>
               {grupo.times.map((time, idxTime) => (
                 <tr key={idxTime}>
                   <td>{time.nome}</td>
-                  <td>{time.pontos}</td>
+                  <td>{time.pontos || 0}</td>
+                  <td>{time.vitorias}</td>
+                  <td>{time.derrotas}</td>
+                  <td>{time.saldoGols}</td>
                 </tr>
               ))}
             </tbody>
@@ -48,12 +100,6 @@ const ClassificacaoGrupos = ({ numParticipantes, participantes }) => {
       ))}
     </div>
   );
-};
-
-// Adicione validação de PropTypes para as props
-ClassificacaoGrupos.propTypes = {
-  numParticipantes: PropTypes.number.isRequired,
-  participantes: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ClassificacaoGrupos;

@@ -27,13 +27,15 @@ table {
 
 th,
 td {
-  padding: 10px;
+  padding: 15px; /* aumentei o padding para deixar os elementos mais espaçados */
   text-align: left;
+  font-size: 18px; /* aumentei o tamanho da fonte */
 }
 
 th {
   background-color: #007bff;
   color: #fff;
+  font-size: 20px; /* aumentei o tamanho da fonte */
 }
 
 tbody tr:nth-child(even) {
@@ -41,16 +43,16 @@ tbody tr:nth-child(even) {
 }
 
 h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 28px; /* aumentei o tamanho da fonte */
+  margin-bottom: 20px; /* aumentei o espaçamento inferior */
 }
 
 h2 {
-  font-size: 36px;
-  margin-bottom: 30px;
+  font-size: 42px; /* aumentei o tamanho da fonte */
+  margin-bottom: 40px; /* aumentei o espaçamento inferior */
 }
 
 h4 {
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 24px; /* aumentei o tamanho da fonte */
+  margin-top: 30px; /* aumentei o espaçamento superior */
 }
