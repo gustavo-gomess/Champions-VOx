@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ClassificacaoGrupos.css";
 
 const ClassificacaoGrupos = ({ numParticipantes, participantes }) => {
@@ -45,7 +46,6 @@ const ClassificacaoGrupos = ({ numParticipantes, participantes }) => {
       .find((time) => time.nome === timeFora);
 
     if (timeCasaObj && timeForaObj) {
-      // Verificação adicionada para evitar erros
       // Atualiza pontos
       if (placarCasa > placarFora) {
         timeCasaObj.pontos += 3;
@@ -98,6 +98,10 @@ const ClassificacaoGrupos = ({ numParticipantes, participantes }) => {
           </table>
         </div>
       ))}
+      {/* Adicione o botão para navegar para a página CalendarioJogosFaseGrupos */}
+      <Link to="/calendario-jogos" className="link-button">
+        Ver Calendário de Jogos
+      </Link>
     </div>
   );
 };

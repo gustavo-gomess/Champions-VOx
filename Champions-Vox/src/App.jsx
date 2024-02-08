@@ -1,8 +1,8 @@
-// App.jsx
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PaginaInicial from "./PaginaInicial/PaginaInicial.jsx";
 import ClassificacaoGrupos from "./ClassificacaoGrupos/ClassificacaoGrupos.jsx";
+import CalendarioJogosFaseGrupos from "./CalendarioJogosFaseGrupos/CalendarioJogosFaseGrupos.jsx"; // Importe o componente CalendarioJogosFaseGrupos
 
 function App() {
   const [numParticipantes, setNumParticipantes] = useState(null);
@@ -29,6 +29,10 @@ function App() {
                 participantes={participantes}
               />
             }
+          />
+          <Route
+            path="/calendario-jogos"
+            element={<CalendarioJogosFaseGrupos grupos={participantes} />}
           />
         </Routes>
       </div>
